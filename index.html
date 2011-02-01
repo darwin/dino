@@ -6,10 +6,15 @@
 		html,body {
 			background-color: #000;
 			color: #fff;
-			font-family: helvetica, arial, sans-serif;
+			font-family: arial, sans-serif;
 			margin: 0;
 			padding: 0;
-			font-size: 12pt;
+			font-size: 11px;
+			text-align: center;
+		}
+		
+		a {
+			color: #aaf;
 		}
 		
 		#canvas {
@@ -34,7 +39,7 @@
 			border: 1px solid #555;
 			background-image: url('media/splash1.gif');
 		}
-		
+
 		#gamebox {
 			display: none;
 		}
@@ -50,17 +55,40 @@
 			color: #ddf;
 		}
 		
+		.desc {
+			margin-top: 10px;
+		}
+		
+		.plot {
+			margin-top: 10px;
+			font-size: 12px;
+		}
+		
+		.tagline {
+			color: #faa;
+			font-size: 14px;
+		}
+		
 	</style>
 
 	<script type="text/javascript" src="game.min.js"></script>
 </head>
 <body>
 	<div class="hint">LEVEL: <a href="?l=intro">intro</a> | <a href="?l=earth">earth</a> | <a href="?l=outro">outro</a> </div>
-
+	<div id="explanation">
+		<div class="desc">
+			Our <a href="http://globalgamejam.org/2011/dino-needs-love">GameJam contribution</a>. A javascript game made in less than 48 hours.</br>
+			It should run fine in Safari, Chrome, Firefox and Opera
+		</div>
+		<div class="plot">
+			A huge meteorite hit the Earth and a small pink dinosaur was lucky to survive the disaster.<br/>But he is alone, he must go out to an epic journey and find some love. Will you help him succeed?<br/><br/>
+			
+			<span class="tagline">"Learn the truth about dinosaur extinction..."</span>
+		</div>
+	</div>
 	<div id="splashbox">
 		<div id="splash" onclick="tryLaunchGame();"></div>
 	</div>
-	
 	<div id="gamebox">
 		<canvas id="canvas"></canvas>
 	</div>
