@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DinoLove Game - powered by ImpactJS</title>
+	<style type="text/css">
+		html,body {
+			background-color: #000;
+			color: #fff;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+		
+		#canvas {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+		}
+
+		#splash {
+			position: absolute;
+			width: 600px;
+			height: 320px;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+			background-image: url('media/splash1.gif');
+		}
+		
+		#gamebox {
+			display: none;
+		}
+		
+		.hint {
+			margin-top: 10px;
+			text-align: center;
+			color: #eee;
+			display: none;
+		}
+		
+		.hint a {
+			color: #ddf;
+		}
+		
+	</style>
+
+	<script type="text/javascript" src="game.min.js"></script>
+</head>
+<body>
+	<div class="hint">LEVEL: <a href="?l=intro">intro</a> | <a href="?l=earth">earth</a> | <a href="?l=outro">outro</a> </div>
+
+	<div id="splashbox">
+		<div id="splash" onclick="tryLaunchGame();"></div>
+	</div>
+	
+	<div id="gamebox">
+		<canvas id="canvas"></canvas>
+	</div>
+	
+	<script type="text/javascript" charset="utf-8">
+		window.tryLaunchGame = function() {
+			if (window.gameLauncher) {
+				window.gameLauncher();
+			}
+		};
+
+		window.addEventListener('keydown', function() {
+			tryLaunchGame();
+		}, false );
+		
+		// Start the Game with 60fps, a resolution of 300x160, scaled, up by a factor of 2
+		window.runGame = function(game) {
+			var launched = false;
+			window.gameLauncher = function() {
+				if (launched) return;
+				document.getElementById('splashbox').style.display = "none";
+				document.getElementById('gamebox').style.display = "block";
+			    ig.main( '#canvas', game, 60, 300, 160, 2 );
+				launched = true;
+			}
+		};
+	</script>
+</body>
+</html>
