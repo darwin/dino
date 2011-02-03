@@ -75,6 +75,30 @@
 		
 	</style>
 
+    <script type="text/javascript" charset="utf-8">
+        // define dummy replacements for firebug functionality (needed for Opera)
+        if (window.opera && !window.console) {
+            window.console = {};
+            function fn() {
+                opera.postError(arguments);
+            };
+            ['log', 'debug', 'info', 'warn', 'error', 'assert', 'dir', 'dirxml', 'group', 'groupEnd', 
+            'time', 'timeEnd', 'count', 'trace', 'profile', 'profileEnd'].forEach(function(name) {
+                window.console[name] = fn;
+            });
+        }            
+        (function() {
+                var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+                if(!window.console){
+                    window.console = {};
+                }
+                for (var i in names) {
+                    window.console[names[i]] = window.console[names[i]] || function(){
+                        return;
+                    };
+                }
+        })();
+    </script>
 	<script type="text/javascript" src="game.min.js"></script>
 </head>
 <body>
